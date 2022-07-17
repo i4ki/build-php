@@ -6,9 +6,12 @@ const { spawn } = require("child_process");
 const PHPBaseURL = "https://www.php.net/distributions/";
 const PHPExt     = ".tar.gz";
 
-console.log("info:", process.argv);
-if (process.argv.length > 2 && process.argv[2] == "local") {
-  local();
+if (process.argv.length > 2) {
+  if (process.argv[2] == "local") {
+    local();
+  } else if (process.argv[2] == "direct-workflow") {
+    ghBuild(process.argv[3]);
+  }
 } else {
   ghAction();
 }
