@@ -1,22 +1,18 @@
 {
-  "name": "hello-world-javascript-action",
-  "version": "1.0.0",
-  "description": "This action prints \"Hello World\" or \"Hello\" + the name of a person to greet to the log.",
+  "name": "build-php",
+  "version": "0.0.1",
+  "description": "This action build php",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/hello-world-javascript-action.git"
+    "url": "git+https://github.com/i4ki/build-php.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/actions/hello-world-javascript-action/issues"
-  },
-  "homepage": "https://github.com/actions/hello-world-javascript-action#readme",
+  "author": "i4k",
+  "license": "Apache2",
   "dependencies": {
     "@actions/core": "^1.6.0",
     "@actions/exec": "^1.1.1",
