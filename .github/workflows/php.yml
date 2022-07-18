@@ -14,6 +14,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: setup go
+        uses: actions/setup-go@v3
+        with:
+          go-version: "1.18"
+
+      - name: check license
+        run: make license/check
+
       - name: Cache node modules
         id: cache-nodemodules
         uses: actions/cache@v2

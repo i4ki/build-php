@@ -1,13 +1,13 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'build-php'
+description: 'Build PHP from source'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  phpVersion:
+    description: 'php version to build'
     required: true
-    default: 'World'
+    default: '8.1.8'
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  php_bin:
+    description: 'Path to PHP binary'
 runs:
   using: 'node16'
   main: 'index.js'
