@@ -61,7 +61,7 @@ function ghAction() {
 function cliBuild(version) {
   const url = PHPBaseURL + "php-" + version + PHPExt;
   var child = spawn("bash", [
-    "./scripts/build-php.sh", 
+    "../scripts/build-php.sh", 
     url,
     version
   ]);
@@ -82,7 +82,7 @@ function cliBuild(version) {
 async function ghBuild(version) {
   const url = PHPBaseURL + "php-" + version + PHPExt;
   await ghExec.exec("bash", [
-    "./scripts/build-php.sh",
+    "../scripts/build-php.sh",
     url,
     version
   ]);
