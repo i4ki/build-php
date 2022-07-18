@@ -9,14 +9,14 @@ jobs:
       fail-fast: false
       matrix:
         operating-system: [ubuntu-22.04, ubuntu-20.04, ubuntu-18.04]
-        php-versions: ['8.0', '8.1', '8.2']
+        php-versions: ['8.1.8', '8.1.7', '8.0.20']
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: install deps
         run: npm install
-        
+
       - name: Build PHP
         run: node index.js direct-workflow ${{ matrix.php-versions }}
 
