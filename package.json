@@ -4,7 +4,7 @@
   "description": "This action build php",
   "main": "index.js",
   "scripts": {
-	"build": "npm ci",
+	"prepare": "ncc build index.js -o dist --source-map",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +18,8 @@
     "@actions/core": "^1.6.0",
     "@actions/exec": "^1.1.1",
     "@actions/github": "^5.0.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.31.1"
   }
 }
