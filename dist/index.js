@@ -1,19 +1,3 @@
-/**
- * Copyright 2022 i4k (Tiago de Bem Natel de Moura)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -9855,6 +9839,7 @@ var __webpack_exports__ = {};
  * limitations under the License.
  */
 
+const path = __nccwpck_require__(5622);
 const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 const ghExec = __nccwpck_require__(1514);
@@ -9862,6 +9847,8 @@ const { spawn } = __nccwpck_require__(3129);
 
 const PHPBaseURL = "https://www.php.net/distributions/";
 const PHPExt     = ".tar.gz";
+
+const script_path = path.join(__dirname, '../scripts/build-php.sh');
 
 if (process.argv.length > 2) {
   if (process.argv[2] == "local") {
@@ -9905,7 +9892,7 @@ function ghAction() {
 function cliBuild(version) {
   const url = PHPBaseURL + "php-" + version + PHPExt;
   var child = spawn("bash", [
-    "../scripts/build-php.sh", 
+    script_path,
     url,
     version
   ]);
@@ -9926,7 +9913,7 @@ function cliBuild(version) {
 async function ghBuild(version) {
   const url = PHPBaseURL + "php-" + version + PHPExt;
   await ghExec.exec("bash", [
-    "../scripts/build-php.sh",
+    script_path,
     url,
     version
   ]);

@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+const path = require('path');
 const core = require('@actions/core');
 const github = require('@actions/github');
 const ghExec = require('@actions/exec');
@@ -21,6 +22,8 @@ const { spawn } = require("child_process");
 
 const PHPBaseURL = "https://www.php.net/distributions/";
 const PHPExt     = ".tar.gz";
+
+const script_path = path.join(__dirname, '../scripts/build-php.sh');
 
 if (process.argv.length > 2) {
   if (process.argv[2] == "local") {
@@ -64,7 +67,7 @@ function ghAction() {
 function cliBuild(version) {
   const url = PHPBaseURL + "php-" + version + PHPExt;
   var child = spawn("bash", [
-    "../scripts/build-php.sh", 
+    script_path,
     url,
     version
   ]);
@@ -85,7 +88,7 @@ function cliBuild(version) {
 async function ghBuild(version) {
   const url = PHPBaseURL + "php-" + version + PHPExt;
   await ghExec.exec("bash", [
-    "../scripts/build-php.sh",
+    script_path,
     url,
     version
   ]);
