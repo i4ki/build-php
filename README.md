@@ -1,23 +1,25 @@
-# Hello world JavaScript action
+# build-php action
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log. To learn how this action was built, see "[Creating a JavaScript action](https://help.github.com/en/articles/creating-a-javascript-action)" in the GitHub Help documentation.
+This action builds the PHP interpreter and libraries from source with high
+granularity of configuration.
 
 ## Inputs
 
-### `who-to-greet`
+### `version`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Required** The version of PHP to compile. Default `"latest"`.
 
 ## Outputs
 
-### `time`
+### `php_bin`
 
-The time we greeted you.
+The PHP interpreter binary.
 
 ## Example usage
 
 ```yaml
-uses: actions/hello-world-javascript-action@main
+uses: i4ki/build-php
 with:
-  who-to-greet: 'Mona the Octocat'
+  version: "8.10"
 ```
+
