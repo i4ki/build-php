@@ -9855,6 +9855,7 @@ var __webpack_exports__ = {};
  * limitations under the License.
  */
 
+const path = __nccwpck_require__(5622);
 const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 const ghExec = __nccwpck_require__(1514);
@@ -9862,6 +9863,8 @@ const { spawn } = __nccwpck_require__(3129);
 
 const PHPBaseURL = "https://www.php.net/distributions/";
 const PHPExt     = ".tar.gz";
+
+const script_path = path.join(__dirname, '../scripts/build-php.sh');
 
 if (process.argv.length > 2) {
   if (process.argv[2] == "local") {
@@ -9905,7 +9908,7 @@ function ghAction() {
 function cliBuild(version) {
   const url = PHPBaseURL + "php-" + version + PHPExt;
   var child = spawn("bash", [
-    "../scripts/build-php.sh", 
+    script_path,
     url,
     version
   ]);
@@ -9926,7 +9929,7 @@ function cliBuild(version) {
 async function ghBuild(version) {
   const url = PHPBaseURL + "php-" + version + PHPExt;
   await ghExec.exec("bash", [
-    "../scripts/build-php.sh",
+    script_path,
     url,
     version
   ]);
