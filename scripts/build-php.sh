@@ -48,8 +48,8 @@ install_system_deps() {
         libssl-dev
     )
 
-    apt-get update || return 1
-    apt-get -y install ${prereq} || return 1
+    sudo apt-get update || return 1
+    sudo apt-get -y install ${prereq} || return 1
 
     # setup swap
     sudo mkdir -p /var/cache/swap/
