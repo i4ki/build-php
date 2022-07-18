@@ -9868,7 +9868,10 @@ function local() {
 
 function ghAction() {
   try {
-    const phpVersion = core.getInput('version');
+    let phpVersion = core.getInput('version');
+    if (!phpVersion) {
+      phpVersion = '8.1.8';
+    }
     console.log(`Building PHP ${phpVersion}!`);
     // Get the JSON webhook payload for the event that triggered the workflow
     const payload = JSON.stringify(github.context.payload, undefined, 2)
@@ -9886,7 +9889,7 @@ function ghAction() {
 function cliBuild(version) {
   const url = PHPBaseURL + "php-" + version + PHPExt;
   var child = spawn("bash", [
-    "./scripts/build-php.sh", 
+    "../scripts/build-php.sh", 
     url,
     version
   ]);
@@ -9907,7 +9910,7 @@ function cliBuild(version) {
 async function ghBuild(version) {
   const url = PHPBaseURL + "php-" + version + PHPExt;
   await ghExec.exec("bash", [
-    "./scripts/build-php.sh",
+    "../scripts/build-php.sh",
     url,
     version
   ]);

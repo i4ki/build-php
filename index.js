@@ -43,7 +43,10 @@ function local() {
 
 function ghAction() {
   try {
-    const phpVersion = core.getInput('version');
+    let phpVersion = core.getInput('version');
+    if (!phpVersion) {
+      phpVersion = '8.1.8';
+    }
     console.log(`Building PHP ${phpVersion}!`);
     // Get the JSON webhook payload for the event that triggered the workflow
     const payload = JSON.stringify(github.context.payload, undefined, 2)
