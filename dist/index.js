@@ -1,3 +1,19 @@
+/**
+ * Copyright 2022 i4k (Tiago de Bem Natel de Moura)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 require('./sourcemap-register.js');/******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -9868,7 +9884,10 @@ function local() {
 
 function ghAction() {
   try {
-    const phpVersion = core.getInput('version');
+    let phpVersion = core.getInput('version');
+    if (!phpVersion) {
+      phpVersion = '8.1.8';
+    }
     console.log(`Building PHP ${phpVersion}!`);
     // Get the JSON webhook payload for the event that triggered the workflow
     const payload = JSON.stringify(github.context.payload, undefined, 2)
@@ -9886,7 +9905,7 @@ function ghAction() {
 function cliBuild(version) {
   const url = PHPBaseURL + "php-" + version + PHPExt;
   var child = spawn("bash", [
-    "./scripts/build-php.sh", 
+    "../scripts/build-php.sh", 
     url,
     version
   ]);
@@ -9907,7 +9926,7 @@ function cliBuild(version) {
 async function ghBuild(version) {
   const url = PHPBaseURL + "php-" + version + PHPExt;
   await ghExec.exec("bash", [
-    "./scripts/build-php.sh",
+    "../scripts/build-php.sh",
     url,
     version
   ]);
