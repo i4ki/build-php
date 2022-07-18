@@ -40,7 +40,7 @@ jobs:
         run: npm ci
     
       - name: Build PHP
-        run: node index.js direct-workflow ${{ matrix.php-versions }}
+        run: node dist/index.js direct-workflow ${{ matrix.php-versions }}
 
       - name: Testing PHP version
         run: |
