@@ -15,6 +15,7 @@
 set -o nounset
 set -o pipefail
 
+# main $URL $version
 main() {
     [[ "$1" ]] || return 1
 
@@ -74,6 +75,7 @@ install_system_deps() {
     return 0
 }
 
+# cleanup $dir
 cleanup() {
     local -r dir="$1"
 
@@ -81,6 +83,7 @@ cleanup() {
     rm -rf "${dir}"
 }
 
+# download_php $URL $outdir $outname
 download_php() {
     local -r URL="$1"
     local -r outdir="$2"
@@ -94,6 +97,7 @@ download_php() {
     return 0
 }
 
+# build $version $URL
 build() {
     [[ "$2" ]] || return 1
 
