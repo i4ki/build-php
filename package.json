@@ -4,6 +4,7 @@
   "description": "This action build php",
   "main": "index.js",
   "scripts": {
+	"build": "npm ci",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
